@@ -138,6 +138,11 @@ public class AddAdmin extends javax.swing.JInternalFrame {
         });
 
         jButton2.setText("Cancel");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         gender1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         gender1.setText("Gender");
@@ -292,6 +297,13 @@ public class AddAdmin extends javax.swing.JInternalFrame {
     private void genderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_genderActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

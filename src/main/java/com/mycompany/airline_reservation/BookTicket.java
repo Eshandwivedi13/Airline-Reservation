@@ -32,6 +32,7 @@ public class BookTicket extends javax.swing.JInternalFrame {
         this.getContentPane().setBackground(Color.gray);
         AutoID();
     }
+    String flightId;
  public void AutoID(){
         try {            
             Connection con;//responsible for connecting backend & frontend(it stores the connection which we have in b/w front and backend)
@@ -75,14 +76,14 @@ public class BookTicket extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         lastname = new javax.swing.JTextField();
         firstname = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        fare = new javax.swing.JTextField();
         contact = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        totalFare = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        totalTickets = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -140,9 +141,9 @@ public class BookTicket extends javax.swing.JInternalFrame {
             }
         });
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        fare.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                fareActionPerformed(evt);
             }
         });
 
@@ -161,9 +162,9 @@ public class BookTicket extends javax.swing.JInternalFrame {
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel14.setText("Discount");
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        totalFare.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                totalFareActionPerformed(evt);
             }
         });
 
@@ -173,9 +174,9 @@ public class BookTicket extends javax.swing.JInternalFrame {
             }
         });
 
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        totalTickets.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                totalTicketsActionPerformed(evt);
             }
         });
 
@@ -197,8 +198,18 @@ public class BookTicket extends javax.swing.JInternalFrame {
         });
 
         jButton6.setText("Book");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("Cancel");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         gender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,8 +235,8 @@ public class BookTicket extends javax.swing.JInternalFrame {
                     .addComponent(jLabel14))
                 .addGap(92, 92, 92)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(totalFare, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(totalTickets, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -239,7 +250,7 @@ public class BookTicket extends javax.swing.JInternalFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jButton4))
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fare, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(110, 110, 110))
@@ -276,17 +287,17 @@ public class BookTicket extends javax.swing.JInternalFrame {
                     .addComponent(gender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 23, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(jButton5))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(totalFare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(totalTickets, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
@@ -371,6 +382,11 @@ public class BookTicket extends javax.swing.JInternalFrame {
                 "Flight ID", "Flight Name", "Arrival", "Departure", "Duration", "Date"
             }
         ));
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(table);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -444,28 +460,40 @@ public class BookTicket extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_firstnameActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void fareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fareActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+        //
+//        int Fare = Integer.parseInt(fare.getText());//converting string to integer for calculating fare
+//        int numOfTickets = Integer.parseInt(totalTickets.getText());//totalTickets, will be entered by user itself
+//        int ans = Fare * numOfTickets;
+//        totalFare.setText(String.valueOf(ans));//adding the totalFare
+        
+        
+    }//GEN-LAST:event_fareActionPerformed
 
     private void contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_contactActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void totalFareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalFareActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_totalFareActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void totalTicketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalTicketsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_totalTicketsActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+         int Fare = Integer.parseInt(fare.getText());//converting string to integer for calculating fare
+        int numOfTickets = Integer.parseInt(totalTickets.getText());//totalTickets, will be entered by user itself
+        int ans = Fare * numOfTickets;
+        totalFare.setText(String.valueOf(ans));//adding the totalFare
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -544,12 +572,86 @@ public class BookTicket extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_genderActionPerformed
 
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        try {
+            // TODO add your handling code here:
+            int col = 0;
+            int row = table.getSelectedRow();
+            flightId = table.getModel().getValueAt(row, col).toString();//get the model from table and get row's cols value and change it to string
+            Connection con;//responsible for connecting backend & frontend(it stores the connection which we have in b/w front and backend)
+            PreparedStatement pre;//it is used to prepare some query which we are going to run in SQL server
+            Class.forName("com.mysql.jdbc.Driver");//mysql-connector-j-8.1.0.jar
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airline_project", "root", "Eshuxworkbench_24");//gotta give link with username and pass
+            //i want to get the fare and also set
+            pre = con.prepareStatement("Select Fare from Flight where flightId = ?");
+            pre.setString(1, flightId);
+            ResultSet rs = pre.executeQuery();
+            rs.next();
+            fare.setText(rs.getString("Fare"));//stored the value of fare with setText and can show in frame, rs.getString(col_Name);
+            
+        
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BookTicket.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(BookTicket.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_tableMouseClicked
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        try {
+            // TODO add your handling code here:
+            
+            String CustomerId = custid.getText();//first of all get customer details
+            String FirstName = firstname.getText();
+            String LastName = lastname.getText();
+            String Contact = contact.getText();
+            String Gender = gender.getText();
+//            String FlightId = flightId.getText();
+            
+            String Arrival = arrival.getSelectedItem().toString();//now get the flight details
+            String Departure = departure.getSelectedItem().toString();
+            String TicketId = id.getText();
+            //Now create the connection with database
+            Connection con;//responsible for connecting backend & frontend(it stores the connection which we have in b/w front and backend)
+            PreparedStatement pre;//it is used to prepare some query which we are going to run in SQL server
+            Class.forName("com.mysql.jdbc.Driver");//mysql-connector-j-8.1.0.jar
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airline_project", "root", "Eshuxworkbench_24");//gotta give link with username and pass
+            pre = con.prepareStatement("insert into ticket(TicketID, FlightID, CustomerID, Arrival, Departure, FirstName, LastName, Contact, Gender)values(?,?,?,?,?,?,?,?,?)");
+            pre.setString(1, TicketId);//inserting the values...
+            pre.setString(2, flightId);
+            pre.setString(3, CustomerId);
+            pre.setString(4, Arrival);
+            pre.setString(5, Departure);
+            pre.setString(6, FirstName);
+            pre.setString(7, LastName);
+            
+            pre.setString(9, Contact);
+            pre.setString(8, Gender);
+            
+            pre.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Ticket booked successfully");
+            this.setVisible(false);
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BookTicket.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(BookTicket.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> arrival;
     private javax.swing.JTextField contact;
     private javax.swing.JTextField custid;
     private javax.swing.JComboBox<String> departure;
+    private javax.swing.JTextField fare;
     private javax.swing.JTextField firstname;
     private javax.swing.JTextField gender;
     private javax.swing.JLabel id;
@@ -575,11 +677,10 @@ public class BookTicket extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField lastname;
     private javax.swing.JTable table;
+    private javax.swing.JTextField totalFare;
+    private javax.swing.JTextField totalTickets;
     // End of variables declaration//GEN-END:variables
 }
